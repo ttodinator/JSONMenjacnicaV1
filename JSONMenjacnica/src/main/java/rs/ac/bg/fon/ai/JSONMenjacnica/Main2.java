@@ -33,7 +33,7 @@ public class Main2 {
 		transakcija.setIzvornaValuta(SOURCE);
 		
 		Format f = new SimpleDateFormat("yyyy-MM-dd");
-		String dat = f.format(transakcija.getDatumTransakcije());
+		String datum = f.format(transakcija.getDatumTransakcije());
 
 		try (FileWriter file = new FileWriter("ostale_transakcije.json")){
 			Gson gson = new GsonBuilder().setPrettyPrinting().create();
@@ -41,7 +41,7 @@ public class Main2 {
 			for (String currency : CURRENCIES) {
 				transakcija.setKrajnjaValuta(currency);
 				URL url = new URL(
-						BASE_URL + "/historical?date="+dat+"&access_key=" + API_KEY + "&source=" + SOURCE + "&currencies=" + currency);
+						BASE_URL + "/historical?date="+datum+"&access_key=" + API_KEY + "&source=" + SOURCE + "&currencies=" + currency);
 			
 				
 				HttpURLConnection con = (HttpURLConnection) url.openConnection();
